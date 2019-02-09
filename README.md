@@ -1,4 +1,4 @@
-# The controller is not available yet
+# The controller will be available soon!
 # 
 
 # RGB_Controller_MQTT
