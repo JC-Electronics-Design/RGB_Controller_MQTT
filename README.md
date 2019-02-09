@@ -1,4 +1,4 @@
-# The controller will be available soon!
+# The controller will be available soon on Tindie!
 # 
 
 # RGB_Controller_MQTT
