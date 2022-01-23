@@ -13,6 +13,7 @@
 #include <AccelStepper.h>
 
 /*******  Change the settings to match your setup   ******/
+/*******  Don't forget to change the OTA password in OTA_init() function   ******/
 
 const char* ssid = "Network-SSID";            //Your network SSID
 const char* password = "Network-password";    //Your network password
@@ -35,7 +36,7 @@ WiFiClient net;
 MQTTClient client;
 
 /********************************/
-#define TIME_BETWEEN_READING  300   //Time in seconds
+#define TIME_BETWEEN_READING  300   //Time in seconds, 300 sec = 5 min
 float temp; //Stores temperature value
 String s_temp;
 char messTemp[10];
@@ -54,7 +55,7 @@ struct LedPin {
   byte green;
   byte blue;
 };
-LedPin ledPin = {14, 12, 16};
+LedPin ledPin = {13, 12, 14};
 
 int LedValue[3] = {0, 0, 0};
 bool update_req = false;
@@ -63,7 +64,7 @@ unsigned long Lasttime = 0;
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("Start RGB Controller...");
+  Serial.println("JC Design\nPD-01RGB-WIFI1\nStart program...");
   pinMode(ledPin.red, OUTPUT);
   pinMode(ledPin.green, OUTPUT);
   pinMode(ledPin.blue, OUTPUT);
@@ -227,7 +228,7 @@ void OTA_init() {
   ArduinoOTA.setHostname(mqttDeviceID);
 
   // No authentication by default
-  ArduinoOTA.setPassword("HomeCaes40A");
+  ArduinoOTA.setPassword("Your Password");
 
   ArduinoOTA.begin();
 }
